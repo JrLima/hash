@@ -10,7 +10,7 @@ Projeto para a disciplina Segurança e Auditoria de Sistemas. Este sistema irá 
 		   
 2. Popule o diretório 'docs':
 
-Apenas coloque alguns arquivos lá ;)
+	Apenas coloque alguns arquivos lá ;)
 
 3. Inicie o servidor:
 
@@ -21,7 +21,10 @@ Apenas coloque alguns arquivos lá ;)
 # Acesse o servidor:
 
     localhost/
-	
+
+Envie qualquer arquivo para verificar as comparações.
+
+Você pode testar um positivo com o arquivo testme.jpg (:	
 
 # Dependências
 

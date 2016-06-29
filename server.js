@@ -22,7 +22,7 @@ app.post('/postFile', function(req, res) {                              // Ao re
     var fstream;                                                        // Declaracao de variável para buffer
     req.pipe(req.busboy);                                               // requisicao http é parseada pela dependência
     req.busboy.on('file', function (fieldname, file, filename) {        // Lendo arquivo:
-        console.log("Uploading: " + filename);                          // Exibe em console upload de arquivo
+        console.log("\nUploading: " + filename+'\n');                          // Exibe em console upload de arquivo
         fstream = fs.createWriteStream(__dirname + '/temp/' + filename);// É criado arquivo em diretório temporário
         file.pipe(fstream);                                             // Arquivo enviado é salvo no local
         fstream.on('close', () => {                                     // Ao final:

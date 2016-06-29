@@ -6,8 +6,9 @@ const fs = require('fs');                                                       
 
 var limahash = {};                                                                  // Inicialização de módulo
 
-limahash.printValues = (filesAndHashes) =>                                          // Função para exibir dados salvos
-    filesAndHashes.forEach(x=>console.log(JSON.stringify(x)));                      // Exibe em console nome e hash de arquivos
+limahash.printValues = (filesAndHashes) => {                                        // Função para exibir dados salvos
+    console.log('\nARQUIVOS ENCONTRADOS E HASHES GERADOS:\n');
+    filesAndHashes.forEach(x=>console.log(JSON.stringify(x)));};                    // Exibe em console nome e hash de arquivos
 
 limahash.saveFile = (file,data,filesAndHashes) =>                                   // Função para salvar arquivo em lista:
     filesAndHashes.push( { name : file, hash : XXHash.hash(data, 0xCAFEBABE) } );   // Adiciona nome de arquivo e hash de conteúdo em lista
@@ -42,8 +43,8 @@ limahash.isOn2 = (filesAndHashes, hashedFile, callback) => {
     var found=false;                                                                // Variável para verificar se arquivo é repetido
     var time = new Date();
     filesAndHashes.forEach((item, index, array) => {                                // Para cada arquivo na lista:
-        if(item.hash===hashedFile)found=true;                                       // Se hashes forem iguais altera variável
-        console.log(hashedFile + ' '+ found+' ' +item.name+ ' ' +item.hash);        // Exibidos em console casos de comparacao
+        if(item.hash===hashedFile){found=true;                                      // Se hashes forem iguais altera variável
+        console.log('It\'s HASH is equal ' +item.name+ '\'s HASH: ' +item.hash);}   // Exibidos em console casos de comparacao
         if(index===array.length-1)callback(found, (new Date() - time)/1000);        // Ao final, devolve resultado ao callback
     });};
 
@@ -52,8 +53,8 @@ limahash.isOnB = (file, filesAndHashes, callback) => {
     var time = new Date();
     filesAndHashes.forEach((item, index, array) => {                                // Para cada arquivo na lista:
         if(fs.readFileSync('./temp/'+file).toString() === fs.readFileSync('./docs/'+item.name).toString())
-            found=true;                                                             // Se conteudos forem iguais altera variável
-        console.log(file + ' '+ found+' ' +item.name);        // Exibidos em console casos de comparacao
+        {found=true;                                                                // Se conteudos forem iguais altera variável
+        console.log('It\'s CONTENT is equal to ' +item.name);}                      // Exibidos em console casos de comparacao
         if(index===array.length-1)callback(found, (new Date() - time)/1000);        // Ao final, devolve resultado ao callback
     });};
     
